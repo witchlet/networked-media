@@ -1,0 +1,17 @@
+a {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: lighter;
+    text-align: justify;
+    color: grey;
+    mix-blend-mode: difference;
+}
+
+body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: clamp(1rem, 6vmin, 2rem);
+    background-size: 20em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
