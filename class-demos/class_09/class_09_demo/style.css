@@ -1,0 +1,16 @@
+/* adding width and height to give a size to body element */
+/* really good css for every webpage/browser ever */
+body {
+	height: 100%;
+	width: 100%;
+	/* remove margin for overflow scrolling */
+	margin: 0;
+}
+
+#text{
+	width: 500px;
+	height: 500px;
+	background-color: aquamarine;
+	margin-top: 40px;
+	margin-left: 100px;
+}
