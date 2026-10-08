@@ -32,8 +32,8 @@ function setVideoSrc() {
 window.onload = () => {
     video_index = getRandomVideoIndex();
     setVideoSrc();
-    video.width = "112%";
-    video.height = "112%";
+    video.width = "120%";
+    video.height = "120%";
     document.body.appendChild(video);
 }
 
