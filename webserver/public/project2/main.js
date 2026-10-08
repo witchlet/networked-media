@@ -14,7 +14,7 @@ const videos = [
 
 let video = document.createElement("iframe");
 let video_index = 0;
-const interval_ms = 10000; //ms
+const interval_ms = 20000; //ms
 const interval_s = interval_ms / 1000;
 
 function getRandomVideoIndex() {
