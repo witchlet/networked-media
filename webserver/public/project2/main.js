@@ -1,14 +1,16 @@
 // [video, duration]
 const videos = [
-    ["4OYVc6unRpk", 198], // https://www.youtube.com/watch?v=4OYVc6unRpk
-    ["QgyW9qjgIf4", 234], // https://www.youtube.com/watch?v=QgyW9qjgIf4
-    ["saDuWchd3x4", 79], // https://www.youtube.com/watch?v=saDuWchd3x4
-    ["ek6dQ9IGOvQ", 165], // https://www.youtube.com/watch?v=ek6dQ9IGOvQ
-    ["klPD-stNou0", 138], // https://www.youtube.com/watch?v=klPD-stNou0
-    ["CzJbz9qSsd0", 254], // https://www.youtube.com/watch?v=CzJbz9qSsd0
-    ["DfcWOPpmw14", 220], // https://www.youtube.com/watch?v=DfcWOPpmw14
-    ["JyGKewWVgEQ", 208], // https://www.youtube.com/watch?v=JyGKewWVgEQ
-    ["NWrZ__uGAf4", 565] // https://www.youtube.com/watch?v=NWrZ__uGAf4
+    ["4OYVc6unRpk", 197], // https://www.youtube.com/watch?v=4OYVc6unRpk underscores - stupid
+    ["QgyW9qjgIf4", 234], // https://www.youtube.com/watch?v=QgyW9qjgIf4 jane remover - dancing with your eyes closed
+    ["saDuWchd3x4", 79], // https://www.youtube.com/watch?v=saDuWchd3x4 gabby start - looking for alaska
+    ["ek6dQ9IGOvQ", 158], // https://www.youtube.com/watch?v=ek6dQ9IGOvQ yt ft. lancey foux - black & tan
+    ["klPD-stNou0", 130], // https://www.youtube.com/watch?v=klPD-stNou0 jim legxacy - father
+    ["CzJbz9qSsd0", 254], // https://www.youtube.com/watch?v=CzJbz9qSsd0 porter robinson - cheerleader
+    ["DfcWOPpmw14", 215], // https://www.youtube.com/watch?v=DfcWOPpmw14 magdalena bay - image 
+    ["JyGKewWVgEQ", 208], // https://www.youtube.com/watch?v=JyGKewWVgEQ neko case - man
+    ["NWrZ__uGAf4", 565], // https://www.youtube.com/watch?v=NWrZ__uGAf4 tsubi club - laced up
+    ["ca7zUSNpL70", 268], // https://www.youtube.com/watch?v=ca7zUSNpL70 yeule - sulky baby
+    ["8oeOwmJa8vk", 4166] // https://www.youtube.com/watch?v=8oeOwmJa8vk quadeca - vanisher, horizon scaper
 ]
 
 var player0, player1;
@@ -60,10 +62,11 @@ function getNewVideoId() {
     return videos[video_index][0];
 }
 
-// max start time is interval seconds before the end of the video,
+// max start time is (interval / 2) seconds before the end of the video,
 // so a video never gets loaded in such a way where it will end halfway through
+// each video lasts interval * 2 seconds because of the double buffer design
 function getRandomTime() {
-    return Math.floor(Math.random() * (videos[video_index][1] - (interval / 1000))); 
+    return Math.floor(Math.random() * (videos[video_index][1] - (interval / 500))); 
 }
 
 setTimeout(() => {
