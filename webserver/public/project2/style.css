@@ -1,26 +1,13 @@
 body {
-    background-color: black;
     height: 100%;
     width: 100%;
     overflow: hidden;
 }
 
-p {
-    color: white;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    transform: scale(2160%, 1000%);
-}
-
-.video {
+iframe {
     pointer-events: none;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0; 
 }
