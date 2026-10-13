@@ -14,7 +14,7 @@ const videos = [
 ]
 
 var player0, player1;
-let video_index = 0;
+let video_index = -1;
 const interval = 5000; //ms
 let intervals_passed = 0;
 
@@ -62,7 +62,7 @@ function getNewVideoId() {
     return videos[video_index][0];
 }
 
-// max start time is (interval / 2) seconds before the end of the video,
+// max start time is (interval / 500) seconds before the end of the video,
 // so a video never gets loaded in such a way where it will end halfway through
 // each video lasts interval * 2 seconds because of the double buffer design
 function getRandomTime() {
