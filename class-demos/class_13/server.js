@@ -41,7 +41,7 @@ app.post('/form-upload', (request, response)=>{
 // LAST
 // PORT, callback function
 // to start our server: node server.js in terminal
-// i needed to add '0.0.0.0' because otherwise the server doesn't load in chrome, since im using wsl
+// i needed to add '0.0.0.0' as an argument because otherwise the server doesn't load in chrome, since im using wsl
 app.listen(8080, '0.0.0.0', ()=>{
     console.log('started or restarted the server!');
     console.log('http://127.0.0.1:8080');
