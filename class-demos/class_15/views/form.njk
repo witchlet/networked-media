@@ -1,0 +1,15 @@
+{% include "partial-nav.njk" %}
+
+{# form: sends data via a POST request to the server #}
+{# to send data to our server, we need attributes in the form #}
+{# attribute: method, action #}
+{# method: what type of http request are we making? for forms, this will always be POST #}
+{# for every <form></form> html with a method & action, we need an app.post in the server.js #}
+<form method="POST" action="/send-message">
+    {# inputs are the data to be sent #}
+    {# in order to process the data, we need to include the name attribute which will name the property in the request.body #}
+    <input type="text" placeholder="name" name="user">
+    <input type="text" placeholder="write a message" name="message">
+    {# always we need to include a submit button #}
+    <input type="submit" value="send message">
+</form>
