@@ -1,29 +1,28 @@
-// importing the express library to use it as our server
-// naming conventions usually name the variable the library name
 const express = require('express');
-
-// initialize our application using express
 const app = express();
+const nunjucks = require("nunjucks");
 
-// "middleware"
-// this is settings that our app needs to know about our server
-
-// allows us to access front-end with GET requests by default
-// serves our front-end html that exists in the public folder
 app.use(express.static('public'));
-// allows us to access the body of a POST request
 app.use(express.urlencoded({ extended: true }));
 
-// ROUTES
-// GET /test-server, callback function
-app.get('/test-server', (request, response)=>{
-    // send info to the client that makes a request to /test-server
-    response.send('this is my test server!')
-})
+nunjucks.configure("views", {
+    autoescape: true,
+    express: app,
+});
+app.set("view engine", "njk");
 
-// LAST
-// PORT, callback function
-// to start our server: node server.js in terminal
+allData = [];
+
+app.get('/', (request, response)=>{
+    response.render('home.njk');
+});
+
+app.get('/contact', (request, response)=>{
+    response.render('contact.njk');
+});
+
 app.listen(3000, '0.0.0.0', ()=>{
-    console.log('http://67.207.83.79:3000/test-server')
-})
+    console.log('http://67.207.83.79:3000/')
+    console.log('http://frameplusplus.mays.computer')
+    console.log('http://127.0.0.1:3000/')
+});
