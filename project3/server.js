@@ -18,6 +18,8 @@ const storage = multer.diskStorage({
         cb(null, './ugc/');
     },
     filename: (req, file, cb) =>  {
+        //the non-randomized names allow for the last stored image to be written over instead of having a new file created, which is convenient bc the last image needs to be deleted anyways.
+        //additionally, this allows the ffmpg integration to locate the image and video files via hard-coded names in the commands
         cb(null, file.originalname);
     },
 });
@@ -39,8 +41,16 @@ app.get('/draw', (request, response) => {
     response.render('draw.njk');
 });
 
+// uploads drawings to server as './ugc/image.png' using /upload from multer
+// also adds the new drawn frame as the last frame of the animation
 app.post('/upload', upload.single('canvasImage'), (request, response) => {
     console.log(request.file);
+    //if (ffmpeg_integration.appendImageToVideo() &= 0b1) {
+        //error which signifies that the video itself needs to be created
+        ////this should never occur after the first frame is added. 
+        //ffmpeg_integration.createVideo();    
+    //}
+    ffmpeg_integration.addFrameOrCreateVideo();
 });
 
 app.listen(3000, '0.0.0.0', () => {
