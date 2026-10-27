@@ -24,6 +24,6 @@ app.get('/test-server', (request, response)=>{
 // LAST
 // PORT, callback function
 // to start our server: node server.js in terminal
-app.listen(80, '0.0.0.0', ()=>{
-    console.log('http://mays.computer/test-server')
+app.listen(3000, '0.0.0.0', ()=>{
+    console.log('http://67.207.83.79:3000/test-server')
 })
