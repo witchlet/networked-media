@@ -14,7 +14,12 @@ nunjucks.configure('views', {
 app.set('view engine', 'njk');
 
 const storage = multer.diskStorage({
-
+    destination: (req, file, cb) =>  {
+        cb(null, './ugc/');
+    },
+    filename: (req, file, cb) =>  {
+        cb(null, file.originalname);
+    },
 });
 const upload = multer({storage: storage});
 
