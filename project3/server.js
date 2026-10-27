@@ -15,7 +15,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 // ROUTES
-// GET /first-server, callback function
+// GET /test-server, callback function
 app.get('/test-server', (request, response)=>{
     // send info to the client that makes a request to /test-server
     response.send('this is my test server!')
@@ -24,6 +24,6 @@ app.get('/test-server', (request, response)=>{
 // LAST
 // PORT, callback function
 // to start our server: node server.js in terminal
-app.listen(3000, '0.0.0.0', ()=>{ //change to port 80
-    console.log('http://0.0.0.0:3000/ test')
+app.listen(80, '0.0.0.0', ()=>{
+    console.log('http://mays.computer/test-server')
 })
