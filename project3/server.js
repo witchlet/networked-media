@@ -21,6 +21,10 @@ app.get('/contact', (request, response)=>{
     response.render('contact.njk');
 });
 
+app.get('/faq', (request, response)=>{
+    response.render('faq.njk');
+});
+
 app.listen(3000, '0.0.0.0', ()=>{
     console.log('http://67.207.83.79:3000/')
     console.log('http://frameplusplus.mays.computer')

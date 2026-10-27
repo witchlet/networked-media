@@ -1,4 +1,4 @@
-const a = document.querySelectorAll("a");
+const element = document.querySelectorAll("a, span");
 randomize();
 
 const body = document.querySelector("body");
@@ -13,7 +13,7 @@ document.addEventListener("click", function(event) {
 
 //random position + letter spacing
 function randomize() {
-    a.forEach(element => {
+    element.forEach(element => {
         element.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
         element.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
         element.style.letterSpacing = Math.floor(Math.random() * 50) + "px";
@@ -25,7 +25,7 @@ function invertColors() {
     if (bool) {
         bool = false;
         body.style.background = "rgb(226, 226, 226)";
-        a.forEach(element => {
+        element.forEach(element => {
             element.style.color = "rgb(226, 226, 226)";
             element.style.backgroundColor = "black";
         });
@@ -33,7 +33,7 @@ function invertColors() {
     } else if (!bool) {
         bool = true;
         body.style.background = "black";
-        a.forEach(element => {
+        element.forEach(element => {
             element.style.color = "black";
             element.style.backgroundColor = "rgb(226, 226, 226)";
         });
