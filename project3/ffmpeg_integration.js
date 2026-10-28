@@ -1,25 +1,27 @@
 const childProcess = require('child_process');
-const ffmpeg = require('ffmpeg');
 
-const createVideo = `ffmpeg -framerate 12 -pattern_type glob -i './ugc/*.png' -c:v libx264 -pix_fmt yuv420p ./ugc/out.mp4`;
+const createVideo = `ffmpeg -framerate 12 -f image2 -pattern_type glob -i './ugc/image.png' -c:v libx264 -pix_fmt yuv420p ./ugc/out.mp4`;
 
-const appendImageToVideo = `ffmpeg -framerate 12 -i './ugc/out.mp4' -i './ugc/image.png' -f lavfi -i anullsrc -filter_complex '[0:v] [0:a] [1:v] [2:a] concat=n=2:v=1:a=1 [v] [a]' -c:v libx264 -c:a aac -strict -2 -map '[v]' -map '[a]' ./ugc/out.mp4`;
+const appendImageToVideo = `ffmpeg -y -i './ugc/out.mp4' -i './ugc/image.png' -f lavfi -i anullsrc -filter_complex '[0:v] [1:v] concat=n=2:v=1 [v]' -c:v libx264 -strict -2 -map '[v]' ./ugc/out1.mp4`;
+
+const renameVideo = `ffmpeg -y -i './ugc/out1.mp4' -c copy './ugc/out.mp4'`
 
 function addFrameOrCreateVideo() {
-    console.log('addFrameOrCreateVideo() running!');
-    let errCode = 0;
-    childProcess.exec(appendImageToVideo, (error, stdout, stderr) => {
-        console.log('childProcess execing!');
-        if (error) { //need to create video
-            //console.log('error:', error);
-            childProcess.exec(createVideo, (error, stdout, stderr) => {
-                console.log("making video!");
-                if (error) console.log('error:', error);
-                errCode |= 0b1;
-            });
-        }
+    childProcess.exec(createVideo, (error, stdout, stderr) => {
+        console.log('img -> video');
+        if (error) console.log(error);
     });
-    return errCode;
+    childProcess.exec(appendImageToVideo, (error, stdout, stderr) => {
+        console.log('video += img');
+        if (error) console.log(error);
+    });
 }
 
-module.exports = {addFrameOrCreateVideo} 
+function copyVideo() {
+    childProcess.exec(renameVideo, (error, stdout, stderr) => {
+        console.log('out1 -> out');
+        if (error) console.log('all the time... ', error);
+    });
+}
+
+module.exports = {addFrameOrCreateVideo, copyVideo} 

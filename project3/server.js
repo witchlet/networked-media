@@ -45,11 +45,7 @@ app.get('/draw', (request, response) => {
 // also adds the new drawn frame as the last frame of the animation
 app.post('/upload', upload.single('canvasImage'), (request, response) => {
     console.log(request.file);
-    //if (ffmpeg_integration.appendImageToVideo() &= 0b1) {
-        //error which signifies that the video itself needs to be created
-        ////this should never occur after the first frame is added. 
-        //ffmpeg_integration.createVideo();    
-    //}
+    ffmpeg_integration.copyVideo();
     ffmpeg_integration.addFrameOrCreateVideo();
 });
 

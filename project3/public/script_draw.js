@@ -7,7 +7,6 @@ const ctx = canvas.getContext('2d', {
     willReadFrequently: true,
 });
 
-
 let prevMouseX, prevMouseY, snapshot;
 let isDrawing = false;
 
@@ -42,11 +41,11 @@ uploadBtn.addEventListener('click', async () => {
         const formData = new FormData(); //ohhhhhhh wow im following along this tutorial and this makes so much sense
         formData.append('canvasImage', blob, 'image.png');
 
-        await fetch('/upload', {
+        fetch('/upload', {
             method: 'POST',
             body: formData,
         });
-        
+        //ffmpeg_integration.addFrameOrCreateVideo();
     }, 'image/png');
 });
 
