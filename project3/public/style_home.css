@@ -1,0 +1,10 @@
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-image: url('/public/frameplusplushomescreen.gif');
+}
+
+a {
+    font-family: 'Courier New', Courier, monospace;
+}
