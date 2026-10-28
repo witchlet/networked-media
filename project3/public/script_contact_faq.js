@@ -4,14 +4,12 @@ randomize();
 const body = document.querySelector('body');
 var bool = true;
 
-//on click
 document.addEventListener('click', function(event) {
     invertColors();
     randomize();
 });
 
 
-//random position + letter spacing
 function randomize() {
     element.forEach(element => {
         element.style.left = Math.floor(Math.random() * window.innerWidth) + 'px';
@@ -20,7 +18,6 @@ function randomize() {
     });
 }
 
-//colors invert on click
 function invertColors() {
     if (bool) {
         bool = false;
