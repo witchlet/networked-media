@@ -45,10 +45,8 @@ uploadBtn.addEventListener('click', async () => {
             method: 'POST',
             body: formData,
         });
-        //ffmpeg_integration.addFrameOrCreateVideo();
     }, 'image/png');
 });
-
 
 canvas.addEventListener('mousedown', startDraw);
 canvas.addEventListener('mousemove', drawStroke);

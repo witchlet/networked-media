@@ -24,4 +24,4 @@ function copyVideo() {
     });
 }
 
-module.exports = {addFrameOrCreateVideo, copyVideo} 
+module.exports = {addFrameOrCreateVideo, copyVideo};

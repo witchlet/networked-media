@@ -3,6 +3,7 @@ const app = express();
 const nunjucks = require('nunjucks');
 const multer = require('multer');
 const ffmpeg_integration = require('./ffmpeg_integration.js');
+const animation_module = require('./animation_module.js');
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
@@ -41,12 +42,18 @@ app.get('/draw', (request, response) => {
     response.render('draw.njk');
 });
 
-// uploads drawings to server as './ugc/image.png' using /upload from multer
-// also adds the new drawn frame as the last frame of the animation
+app.get('/view-animation', (request, response) => {
+    let video_url = animation_module.getVideoUrl();
+    response.render('view-animation.njk', {url: video_url});
+})
+
+// uploads drawings to server as './ugc/image.png' thank u multer
+// also stores two videos of the animation, one including the most recent frame and one without
 app.post('/upload', upload.single('canvasImage'), (request, response) => {
     console.log(request.file);
     ffmpeg_integration.copyVideo();
     ffmpeg_integration.addFrameOrCreateVideo();
+    response.redirect('/view-animation');
 });
 
 app.listen(3000, '0.0.0.0', () => {
