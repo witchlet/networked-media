@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>you drew the last frame of this!!!! :D</title>
+        <link href='style_view_animation.css' rel='stylesheet'>
+        <script src='script_view_animation.js' defer></script>
+    </head>
+    <body>
+<<<<<<< HEAD
+        <video src="http://67.207.83.79:3000/ugc/out1.mp4" type="video/mp4"></video>
+=======
+        <p id="message">YOU DREW THE LAST FRAME OF THIS!!! SO PROUD ANAK...❤️‍🩹🩹</p>
+        <div id="video_container" class="centered"></div>
+>>>>>>> refs/remotes/origin/main
+    </body>
+</html>

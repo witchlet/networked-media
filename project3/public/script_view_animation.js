@@ -12,7 +12,7 @@ animation.addEventListener('error', (error) => {
 message.innerText = 'YOU DREW THE LAST FRAME OF THIS!!! SO PROUD ANAK...❤️‍🩹🩹';
 
 function setAnimationSrc(filename) {
-    animation.src = `http://localhost:3000/ugc/${filename}.mp4`;
+    animation.src = `http://67.207.83.79:3000/ugc/${filename}.mp4`;
 }
 
 setAnimationSrc('out1');
