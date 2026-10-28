@@ -3,7 +3,6 @@ const app = express();
 const nunjucks = require('nunjucks');
 const multer = require('multer');
 const ffmpeg_integration = require('./ffmpeg_integration.js');
-const animation_module = require('./animation_module.js');
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
@@ -48,8 +47,7 @@ app.get('/draw', (request, response) => {
 });
 
 app.get('/view-animation', (request, response) => {
-    let video_url = animation_module.getVideoUrl();
-    response.render('view-animation.njk', {url: video_url});
+    response.render('view-animation.njk');
 })
 
 // uploads drawings to server as './ugc/image.png' thank u multer
@@ -58,7 +56,7 @@ app.post('/upload', upload.single('canvasImage'), (request, response) => {
     console.log('uploading to disk: ', request.file);
     ffmpeg_integration.copyVideo();
     ffmpeg_integration.addFrameOrCreateVideo();
-    response.redirect('/view-animation');
+    //response.redirect('/view-animation');
 });
 
 app.listen(3000, '0.0.0.0', () => {
