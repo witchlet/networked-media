@@ -1,17 +1,24 @@
-const element = document.querySelectorAll('a, span');
-randomize();
-
 const body = document.querySelector('body');
 var bool = true;
+const startElements = document.querySelectorAll('a, span');
+
+for (let i = 0; i < 10; i++) {
+    startElements.forEach(element => {
+        let copy = element.cloneNode(true);
+        body.appendChild(copy);
+    });
+}
+const elements = document.querySelectorAll('a, span');
+
+randomize();
 
 document.addEventListener('click', function(event) {
     invertColors();
     randomize();
 });
 
-
 function randomize() {
-    element.forEach(element => {
+    elements.forEach(element => {
         element.style.left = Math.floor(Math.random() * window.innerWidth) + 'px';
         element.style.top = Math.floor(Math.random() * window.innerHeight) + 'px';
         element.style.letterSpacing = Math.floor(Math.random() * 50) + 'px';
@@ -22,7 +29,7 @@ function invertColors() {
     if (bool) {
         bool = false;
         body.style.background = 'rgb(226, 226, 226)';
-        element.forEach(element => {
+        elements.forEach(element => {
             element.style.color = 'rgb(226, 226, 226)';
             element.style.backgroundColor = 'black';
         });
@@ -30,7 +37,7 @@ function invertColors() {
     } else if (!bool) {
         bool = true;
         body.style.background = 'black';
-        element.forEach(element => {
+        elements.forEach(element => {
             element.style.color = 'black';
             element.style.backgroundColor = 'rgb(226, 226, 226)';
         });
