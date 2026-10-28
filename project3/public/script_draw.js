@@ -10,6 +10,12 @@ const ctx = canvas.getContext('2d', {
 let prevMouseX, prevMouseY, snapshot;
 let isDrawing = false;
 
+//will be added after the user finishes drawing
+const btnContainer = document.getElementById('btnContainer');
+const linkToViewAnimation = document.createElement('a');
+linkToViewAnimation.href = '/view-animation';
+linkToViewAnimation.innerText = 'view animation with your added frame :D'
+
 const setCanvasBackground = () => {
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -46,7 +52,13 @@ uploadBtn.addEventListener('click', async () => {
             body: formData,
         });
     }, 'image/png');
+    removeButtonAndAddLink();
 });
+
+function removeButtonAndAddLink() {
+    uploadBtn.remove();
+    btnContainer.appendChild(linkToViewAnimation);
+}
 
 canvas.addEventListener('mousedown', startDraw);
 canvas.addEventListener('mousemove', drawStroke);

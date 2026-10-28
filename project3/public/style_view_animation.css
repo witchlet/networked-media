@@ -1,0 +1,30 @@
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+#video_container {
+    height: 100%;
+    width: 100%;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#message {
+    position: absolute;
+    left: 50%;
+    top: 12.5%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+}
+

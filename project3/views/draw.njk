@@ -6,9 +6,13 @@
     </head>
     <body>
         <p>no erase!!!!! left click to draw.....</p>
-        <canvas id='canvas' width='640' height='480'></canvas>
+        <p>left side is your canvas, right side is the previous frame... if the right side doesnt load properly...guess what.</p>
         <div>
-            <button id='uploadBtn'>i'm done drawing!!!!</button>
+            <canvas id='canvas' class='image' width='640' height='480'></canvas>
+            <img src='/ugc/image.png' class='image'>
+        </div>
+        <div id="btnContainer">
+            <button id='uploadBtn' href="/view-animation">i'm done drawing!!!!</button>
         </div>
     </body>
 </html>

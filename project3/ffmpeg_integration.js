@@ -1,10 +1,10 @@
 const childProcess = require('child_process');
 
-const createVideo = `ffmpeg -framerate 12 -f image2 -pattern_type glob -i './public/ugc/image.png' -c:v libx264 -pix_fmt yuv420p ./public/ugc/out.mp4`;
+const createVideo = `ffmpeg -framerate 12 -f image2 -pattern_type glob -i './ugc/image.png' -c:v libx264 -pix_fmt yuv420p ./ugc/out.mp4`;
 
-const appendImageToVideo = `ffmpeg -y -i './public/ugc/out.mp4' -i './public/ugc/image.png' -f lavfi -i anullsrc -filter_complex '[0:v] [1:v] concat=n=2:v=1 [v]' -c:v libx264 -strict -2 -map '[v]' ./public/ugc/out1.mp4`;
+const appendImageToVideo = `ffmpeg -y -i './ugc/out.mp4' -i './ugc/image.png' -f lavfi -i anullsrc -filter_complex '[0:v] [1:v] concat=n=2:v=1 [v]' -c:v libx264 -strict -2 -map '[v]' ./ugc/out1.mp4`;
 
-const renameVideo = `ffmpeg -y -i './public/ugc/out1.mp4' -c copy './public/ugc/out.mp4'`
+const renameVideo = `ffmpeg -y -i './ugc/out1.mp4' -c copy './ugc/out.mp4'`
 
 function addFrameOrCreateVideo() {
     childProcess.exec(createVideo, (error, stdout, stderr) => {
