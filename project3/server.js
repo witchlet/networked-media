@@ -7,6 +7,7 @@ const animation_module = require('./animation_module.js');
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+app.use('/ugc', express.static('./ugc'));
 
 nunjucks.configure('views', {
     autoescape: true,
@@ -25,6 +26,10 @@ const storage = multer.diskStorage({
     },
 });
 const upload = multer({storage: storage});
+
+//also store video in RAM so that it can be streamed to the client
+const uploadToMemory = multer({storage: multer.memoryStorage()});
+
 
 app.get('/', (request, response) => {
     response.render('home.njk');
@@ -50,7 +55,7 @@ app.get('/view-animation', (request, response) => {
 // uploads drawings to server as './public/ugc/image.png' thank u multer
 // also stores two videos of the animation, one including the most recent frame and one without
 app.post('/upload', upload.single('canvasImage'), (request, response) => {
-    console.log(request.file);
+    console.log('uploading to disk: ', request.file);
     ffmpeg_integration.copyVideo();
     ffmpeg_integration.addFrameOrCreateVideo();
     response.redirect('/view-animation');
