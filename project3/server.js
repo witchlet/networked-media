@@ -16,7 +16,7 @@ app.set('view engine', 'njk');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) =>  {
-        cb(null, './ugc/');
+        cb(null, './public/ugc/');
     },
     filename: (req, file, cb) =>  {
         //the non-randomized names allow for the last stored image to be written over instead of having a new file created, which is convenient bc the last image needs to be deleted anyways.
@@ -47,7 +47,7 @@ app.get('/view-animation', (request, response) => {
     response.render('view-animation.njk', {url: video_url});
 })
 
-// uploads drawings to server as './ugc/image.png' thank u multer
+// uploads drawings to server as './public/ugc/image.png' thank u multer
 // also stores two videos of the animation, one including the most recent frame and one without
 app.post('/upload', upload.single('canvasImage'), (request, response) => {
     console.log(request.file);

@@ -1,6 +1,6 @@
 const url = require('url');
 
-video_url = url.pathToFileURL('../ugc/out1.mp4');
+video_url = url.pathToFileURL('../public/ugc/out1.mp4');
 //animation = document.createElement('video');
 //video.src = video_url;
 
