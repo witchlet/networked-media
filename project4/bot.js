@@ -76,7 +76,7 @@ async function postOnMastodon() {
                 break;
             case 1:
                 object = json[data_index].condition;
-                if (data_index == 5) object = json[data_index].symptoms; 
+                if (data_index == 5) object = json[data_index].symptoms;
                 break;
             case 2:
                 object = json[data_index].animal;
