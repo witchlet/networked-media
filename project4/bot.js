@@ -91,6 +91,7 @@ async function postOnMastodon() {
         }
         // make our status
         makeStatus(post);
+    }
 }
 
 function isSleeping() {
