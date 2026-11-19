@@ -21,7 +21,15 @@ async function makeStatus(text) {
     });
 }
 
-setInterval(async () => {
+console.log('bot starting');
+console.log('time: ' + new Date());
+
+postOnMastodon();
+
+setInterval(postOnMastodon, 3600000); 
+
+async function postOnMastodon() {
+    console.log("bot is working!");
     if (isSleeping()) return;
 
     // TODO: ADD API REQUEST
@@ -68,6 +76,7 @@ setInterval(async () => {
                 break;
             case 1:
                 object = json[data_index].condition;
+                if (data_index == 5) object = json[data_index].symptoms; 
                 break;
             case 2:
                 object = json[data_index].animal;
@@ -82,12 +91,9 @@ setInterval(async () => {
         }
         // make our status
         makeStatus(post);
-    }
-
-    // TODO: CHANGE 5000ms TO YOUR SPECIFIC INTERVAL
-}, 3600000); 
+}
 
 function isSleeping() {
-    now = new Date();
-    return now.getHours() >= 7 && now.getHours() <= 10;
+    let now = new Date();
+    return now.getHours() >= 12 && now.getHours() <= 17;
 }
