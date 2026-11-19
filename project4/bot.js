@@ -96,5 +96,6 @@ async function postOnMastodon() {
 
 function isSleeping() {
     let now = new Date();
-    return now.getHours() >= 12 && now.getHours() <= 17;
+    console.log(now.getHours());
+    return now.getHours() >= 12 && now.getHours() < 17;
 }
