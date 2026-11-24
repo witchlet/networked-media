@@ -1,0 +1,18 @@
+{% extends "layouts/base.njk" %}
+
+{% block extrastylesheet %}
+    <link href="form.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}sign up{% endblock %}
+
+{% block content %}
+  <div class="login">
+    <a href="/signup">don't have an account?</a>
+    <form method="POST" action="/authenticate">
+      <input type="text" name="username" />
+      <input type="password" name="pass" />
+      <input type="submit" value="login" />
+    </form>
+  </div>
+{% endblock %}
